@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minikube-app2
+  labels:
+    app.kubernetes.io/name: minikube-app2
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: web-port
+      name: web
+  selector:
+    app.kubernetes.io/name: minikube-app2

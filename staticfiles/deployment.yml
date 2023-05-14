@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-nginx-deployment
+  labels:
+    app.kubernetes.io/name: minikube-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minikube-nginx
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: minikube-nginx
+    spec:
+      containers:
+        - name: minikube-nginx-container
+          image: minikube-nginx
+          imagePullPolicy: Never
+          ports:
+            - name: web-port
+              protocol: TCP
+              containerPort: 80
